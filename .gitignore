@@ -4,6 +4,8 @@
 
 # Custom
 workspace.sql
+cmd/multi/multi
+cmd/single/single
 
 ### Go ###
 # Binaries for programs and plugins
