@@ -1,6 +1,6 @@
 FROM mysql:5.7
 
-ENV MYSQL_DATABASE=migrate-exp MYSQL_ROOT_PASSWORD=root MYSQL_USER=mysqluser MYSQL_PASSWORD=abc123
+ENV MYSQL_ROOT_PASSWORD=root MYSQL_USER=mysqluser MYSQL_PASSWORD=abc123
 
 COPY init_db.sql /docker-entrypoint-initdb.d/
 

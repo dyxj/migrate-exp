@@ -1,9 +1,3 @@
-# 1 create initial schemas - up;
-# TODO confirm if down is triggered if up fails, I don't think it does;
-SET autocommit = 0;
-
-START TRANSACTION;
-
 CREATE
     TABLE
     IF NOT EXISTS app_user
@@ -39,7 +33,7 @@ CREATE
     COLLATE = utf8mb4_general_ci;
 
 
-CREATE TABLE IF NOT EXISTS event
+CREATE TABLE IF NOT EXISTS `event`
 (
     id          BIGINT(20)  NOT NULL AUTO_INCREMENT,
     admin_id    BIGINT(20)  NOT NULL,
@@ -56,7 +50,3 @@ CREATE TABLE IF NOT EXISTS event
     ENGINE = InnoDB
     DEFAULT CHARSET = utf8mb4
     COLLATE = utf8mb4_general_ci;
-
-COMMIT;
-
-SET autocommit = 1;
