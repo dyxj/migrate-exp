@@ -1,0 +1,7 @@
+version: "3"
+services:
+  mysql_db:
+    build: ./db
+    ports:
+      - "3301:3306"
+    container_name: migrate-exp-db
