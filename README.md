@@ -10,7 +10,9 @@ version control for databases. MySQL was used to perform this task.
 - docker-compose
 
 ## Instructions
-`cd` into `0dev` and run `make up-docker` to setup initial mysql database.
+`cd` into `0dev` and run `make up-docker` to setup initial mysql database.  
+`make clean-docker` can be used to clean up docker containers when you are done.  
+Do check the `Makefile`s for useful commands.
 
 ## Documentation
 In the `cmd` there are two projects
