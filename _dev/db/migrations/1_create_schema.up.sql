@@ -1,4 +1,5 @@
-# TODO confirm if down is triggered if up fails
+# 1 create initial schemas - up;
+# TODO confirm if down is triggered if up fails, I don't think it does;
 SET autocommit = 0;
 
 START TRANSACTION;
@@ -23,17 +24,15 @@ CREATE INDEX active ON app_user (active);
 
 CREATE
     TABLE
-    IF NOT EXISTS person
+    IF NOT EXISTS entity
 (
     id          BIGINT(20)  NOT NULL AUTO_INCREMENT,
-    app_user_id BIGINT(20)  NOT NULL,
+    app_user_id BIGINT(20),
     created_by  VARCHAR(20) NOT NULL,
     created_at  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_by  VARCHAR(20) NOT NULL,
     updated_at  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id),
-    FOREIGN KEY (app_user_id)
-        REFERENCES app_user (id)
+    PRIMARY KEY (id)
 )
     ENGINE = InnoDB
     DEFAULT CHARSET = utf8mb4
@@ -43,7 +42,7 @@ CREATE
 CREATE TABLE IF NOT EXISTS event
 (
     id          BIGINT(20)  NOT NULL AUTO_INCREMENT,
-    person_id   BIGINT(20),
+    admin_id    BIGINT(20)  NOT NULL,
     name        VARCHAR(255),
     description TEXT,
     created_by  VARCHAR(20) NOT NULL,
@@ -51,8 +50,8 @@ CREATE TABLE IF NOT EXISTS event
     updated_by  VARCHAR(20) NOT NULL,
     updated_at  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    FOREIGN KEY (person_id)
-        REFERENCES person (id)
+    FOREIGN KEY (admin_id)
+        REFERENCES app_user (id)
 )
     ENGINE = InnoDB
     DEFAULT CHARSET = utf8mb4
